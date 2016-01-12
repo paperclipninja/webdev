@@ -1,0 +1,59 @@
+<html>
+<head>
+</head>
+<body onload="initialize()">
+<canvas width="750" height="600" id="canvas1" style="border:1px solid #000000;" style="float:left">
+	</canvas>
+
+
+<script>
+var xx, yy=null;
+ window.bool=false;
+ var ctx=null;
+function initialize(){
+	canv=document.getElementById("canvas1");
+	ctx=canv.getContext('2d');
+	canv.addEventListener("mousedown",startDrag,false);
+	canv.addEventListener("mousemove",drag,false);
+	canv.addEventListener("mouseup",endDrag,false);
+	ctx.strokeRect(20,20,25,25);
+	/*else if(window.attachEvent)
+	{
+		canv.attatchEvent('onmousedown',startDrag);
+		canv.attatchEvent('onmousemove',drag);
+		canv.attatchEvent('onmouseup',stopDrag)
+	}*/
+}	
+function startDrag(event){
+		//ev=ev||event;
+		//alert("working?");
+		xx=event.pageX;
+		//alert("x" +window.xx);
+		yy=event.pageY;
+		bool=true;
+}
+function clear() {
+ ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+function drag(event){
+if(bool){
+	//clear();
+	canv=document.getElementById("canvas1");
+	ctx.clearRect(0,0,canv.width, canv.height);
+	ctx.strokeRect(xx,yy,-xx+event.pageX, -yy+event.pageY);
+	//ctx.clearRect(xx,yy,event.pageX-xx, event.pageY-yy);
+	//alert("bool is"+bool);
+}
+}
+function endDrag(event){
+	//alert("drag ended")
+		//canvas=window.getElementById('canvas1');
+		/*ctx=canvas.getContext('2d');
+		ctx.strokeRect(xx,yy,Math.abs(xx-event.pageX),Math.abs(yy-event.pageY));
+		ctx.stroke();*/
+		bool=false;
+		//alert("bool is"+bool)
+}
+	</script>
+</body>
+</html>

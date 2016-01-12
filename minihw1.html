@@ -1,0 +1,53 @@
+<html>
+<head>
+
+<title>Mini Lab</title>
+</head>
+<body onclick="bodyClicked(event)">
+<table border>
+	<tr id='tr 2'>
+		<td id='td1' colspan=2>HELLO</td>
+		<td id='td2' rowspan=2>TABLE</td>
+	</tr>
+	<tr id='tr 2'>
+		<td rowspan=2> TABLE</td>
+		<td>TBLSKD</td>
+	</tr>
+	<tr>
+		<td colspan=2>SLDKJF</td>
+	</tr>
+</table>
+<h1> THIS IS A WEBPAGE</h1>
+<p> :O<br /> Wow! amazing</p>
+<ol>
+<li>This</li>
+<li>is</li>
+<li>a</li>
+<li>list</li>
+</ol>
+<img src="leaf.jpg"></img>
+<br>
+<p id='clicked'>Object clicked: </p>
+<script>
+function bodyClicked(evt)
+ {
+  evt = evt || window.evt;
+  stng='';
+  myObj=evt.target;
+for(index in myObj)
+{ 
+	asd=myObj[index];
+	if(typeof(asd)=='function')continue;
+	if(asd!= null && asd!=-1 && asd!=0 &&((''+myObj[index]).indexOf('obj')==-1))
+	{
+		if((''+index).indexOf('_')==-1)
+		{ 
+			if((''+index).indexOf('URI')==-1)
+			{ 
+		stng+=(index+" ["+typeof(myObj[index])+"] "+myObj[index])+"<br>";}}
+}
+}
+  document.getElementById('clicked').innerHTML='Object clicked: '+stng;
+}
+</script>
+</body>

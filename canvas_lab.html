@@ -1,0 +1,82 @@
+<html>
+
+<head>
+<title>bs lab</title>
+</head>
+
+<body onload=initialise()>
+	<h1>Canvas Lab</h1>
+	<br />
+		<table style="float:left">
+		<tr>
+			<td><button>Option</button></td>
+		</tr>
+		<tr>
+			<td><button>Option</button></td>
+		</tr>
+		<tr>
+			<td><button>Option</button></td>
+		</tr>
+	</table>
+	<canvas width="750" height="600" id="canvas" style="border:1px solid #000000;" style="float:left">
+	</canvas>
+	<div style="clear:both"></div>
+
+<script>
+	function initialise(){
+		window.canvas=document.getElementById("canvas");
+		window.canvas.addEventListener("mousedown",doMouseUp,false);
+		window.pos1=0;
+		window.pos2=0;
+	}
+
+	function doMouseDown1(event){
+		canvas_x=event.pageX;
+		canvas_y=event.pageY;
+		var ctx= window.canvas.getContext('2d');
+
+			if(pos1==0)
+		{
+			pos1=[canvas_x-58, canvas_y-8]
+		}
+		else
+		{
+			ctx.moveTo(pos1[0],pos1[1]);
+			ctx.lineTo(canvas_x-58,canvas_y-8);
+			ctx.stroke();
+			pos1[0]=canvas_x-58;
+			pos1[1]=canvas_y-8;
+		} 
+		//alert("X="+canvas_x+", Y="+canvas_y);
+	}
+	function doMouseUp(event){
+		canvas_x=event.pageX;
+		canvas_y=event.pageY;
+
+		var ctx= window.canvas.getContext('2d');
+		ctx.beginPath();
+		ctx.arc(canvas_x-75, canvas_y-85, 5, 0, 2 * Math.PI, false)
+		ctx.stroke();
+	}
+
+</script>
+<!---58 and 8-->
+<!--some random bullshit code here. 
+Canvas?
+graph?
+var x=document.getElementById('canvas');
+var ctx=x.getContext('2d')
+ctx.moveTo(point,point)
+ctx.lineTo(endp,endp)
+ctx.stroke() (draws line)
+Clearing the canvas: x.width=x.width;
+context.strokeStyle="#000"; changes it to black
+
+-->
+<canvas id='canvas' width="200" height="100" style="border:1px solid #00000000">
+
+</canvas>
+
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<http>
+<head>
+
+</head>
+<body onLoad="startup()">
+<h1> 50 States</h1>
+<input type=text id='textbox' name='textbox' onkeydown="if (event.keyCode == 13) document.getElementById('button').click(); " value="">
+<br><br>
+<button type=button accesskey='S' id='button' onclick="startTimer(); submit(); "><u>S</u>tart</button>
+<p id="list"> </p>
+<script>
+
+function startup()
+{
+	window.states=[""];
+	window.stateNames=['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island','South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+}
+function submit(words)
+{
+	var paragraph= document.getElementById("list").value;
+
+		if(window.states.indexOf(word)==-1)
+		{
+			window.states.push( word);
+		}
+	var string="";
+	for(var x =0; x<window.states.length; x+=1)
+	{
+	string=string+window.states[x]+"<br>";
+	}
+	document.getElementById("list").innerHTML = string;
+	document.getElementByID('textbox').value="";
+}
+function keypressVal()
+{
+var keypress=document.getElementById("textbox");
+var words=keypress.value;
+if window.stateNames.indexOf(words>-1){
+submit(words);
+}
+}
+function startTimer()
+{
+document.getElementById('textbox').readOnly=false; 
+document.getElementById('textbox').focus();
+setTimeout(function(){alert('Time is up')},300000);
+
+}
+</script>
+</body>
+</http>

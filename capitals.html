@@ -1,0 +1,197 @@
+<html>
+<head>
+	<title>State Capitals</title>
+</head>
+<body onLoad="startup()">
+	<h1>State Capitals</h1>
+	<table cellpadding="15" style="float:left">
+		<tr>
+			<td id='title' colspan="2">
+			<p id='stateDisplay'>HELLO HELLO</p>
+			<p id=''
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type=text name='input' id='input'></td>
+		</tr>
+		<tr>
+			<td> 
+				<button type=button accesskey='E' id='button' onclick="functio()"><u>E</u>nter</button>
+			</td>
+			<td>
+				<button type=button accessKey='S' id='skip' onclick="displayState();"><u>S</u>kip</button>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div id='clock' style="font-size:50px;" align=center>TIMER</div>
+			</td>
+		</tr>
+		<tr>
+			<td id='skipped'>Number Skipped: 0 </td>
+		</tr>
+		<tr>
+			<td id='guessed'>Number Guessed: 0</td>
+		</tr>
+		</table>
+	<div style="clear:both"></div>
+
+<script>
+
+function startup()
+{
+	document.getElementById('input').disabled=true;
+	window.capitals=[""];
+	window.m="5";
+	window.s="0";
+	window.skipped=0;
+	window.guessed=0;
+	var second=checkTime(window.s);
+	var minute=window.m;
+	document.getElementById('clock').innerHTML=minute+":"+second;
+	window.stateNames=['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island','South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+	window.capitals=['Montgomery', 'Juneau', 'Phoenix', 'Little Rock', 'Sacramento', 'Denver', 'Hartford', 'Dover', 'Tallahassee', 'Atlanta', 'Honolulu', 'Boise', 'Springfield', 'Indianapolis', 'Des Moines', 'Topeka', 'Frankfort ', 'Baton Rouge ', 'Augusta', 'Annapolis', 'Boston', 'Lansing', 'St. Paul', 'Jackson', 'Jefferson City', 'Helena', 'Lincoln', 'Carson City', 'Concord', 'Trenton', 'Santa Fe', 'Albany', 'Raleigh', 'Bismark', 'Columbus', 'Oklahoma City', 'Salem', 'Harrisburg', 'Providence', 'Columbia', 'Pierre', 'Nashville', 'Austin', 'Salt Lake City', 'Montpelier', 'Richmond', 'Olympia', 'Charleston', 'Madison', 'Cheyenne', ];
+	window.numbers=[];
+}
+function skip()
+{
+	window.skipped+=1;
+	document.getElementById('skipped').innerHTML= "Skipped:" + window.skipped;
+}
+function tick()
+{
+
+	if(parseInt(window.s)==0)
+	{
+		window.m=parseInt(window.m)-1;
+		window.s="59";
+	}
+	else
+	{
+		window.s= parseInt(window.s)-1;
+	}
+	var second=checkTime(window.s);
+	var minute=window.m;
+	elem('clock').innerHTML=minute+":"+second;
+	if(parseInt(window.m)==0 && parseInt(window.s)==0)
+	{
+		alert("TIMES UP")
+	}
+	else if( parseInt(window.m)>=0){
+		if(parseInt(window.s)>=0)
+		{
+			window.setTimeout(function(){tick()}, 1000);
+		}
+}
+}
+function checkTime(i) {
+    if (i<10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+function submit()
+{
+		var paragraph= elem("list").value;
+		var word = elem('textbox').value;
+		if(postalCodes.indexOf(word)>-1)
+		{
+			var st=stateNames[postalCodes.indexOf(word)]
+			if(window.states.indexOf(st)==-1)
+			{
+				window.states.push(st);
+				elem('textbox').value="";
+			}
+		}
+		else if(stateCheck.indexOf(word.toUpperCase())>-1)
+		{
+			var st=stateNames[stateCheck.indexOf(word.toUpperCase())]
+			if(window.states.indexOf(st)==-1)
+			{
+				window.states.push(st);
+				elem('textbox').value="";
+			}
+		}
+		var string="";
+		window.states=window.states.sort();
+		for(var x =0; x<window.states.length; x+=1)
+		{
+			if(x>0 && x%10==0)
+		{
+			string=string+window.states[x]+"<br>";
+		}
+		else
+		{
+			string=string+window.states[x]+"&nbsp&nbsp&nbsp&nbsp ";
+		}
+		
+		}
+		if(window.states.length==51)
+		{
+			alert("YOU WIN!")
+		}
+		elem("list").innerHTML = string;	
+}
+function functio()
+{
+	
+	var elem = document.getElementById('input');
+		elem.disabled=false;
+		document.getElementById('input').focus();
+		tick();	 
+}
+function disabl()
+{	
+	var elem = document.getElementById('input');
+	if(elem.disabled==true)
+	{
+		elem.disabled=false;
+	}	
+	if(elem.disabled==false)
+	{
+		elem.disbled==true;
+	}
+}
+function elem(id)
+{
+	return document.getElementById(id);
+}
+
+function skip()
+{
+
+
+
+}
+function containsObject(obj, list) {
+    var i;
+    for (i = 0; i < list.length; i++) {
+        if (list[i] === obj) {
+            return true;
+        }
+    }
+
+    return false;
+}
+function displayState()
+{
+	var numb=Math.round(Math.random()*50);
+	if(containsObject(numb,window.numbers)
+	{
+	var state=window.stateNames[numb];
+	var capital=window.capitals[numb];
+	document.getElementById('stateDisplay').innerHTML=state;
+	window.numbers.push(numb);
+	}
+	else
+	{
+		displayState();
+	}
+
+
+}
+</script>
+
+
+
+</body>
+</html>
+

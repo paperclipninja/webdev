@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>listbox lab</title>
+  <style>
+  h1 {color:#4A4A4A}
+  body {background-color:lightgray}
+  table {padding-left:50px; padding-right:50px;}
+</style>
+</head>
+<body onLoad="startup()">
+	<h1>Listbox Lab </h1>
+	<form action="" style="padding:25px">
+	<input type="radio" name="type" value="Listbox" onclick="change('list')"> <font size='4'>Listbox</font><br>
+	<input type="radio" name="type" value="Dropbox" onclick="change('drop')" checked='true'><font size='4' >Dropbox</font>
+	</form>
+	<table cellpadding="50px">
+		<tr>
+
+	<td><select id="selection" style="float:left" onclick="addThings()" onkeyup="addThings();">
+		<option><font size='4'> Red</font></option>
+		<option><font size='4'> Bored</font></option>
+		<option><font size='4'> Cat</font> </option>
+		<option><font size='4'> Dog</font> </option>
+	</select>
+</td>
+	<td>
+	<select size="3" name="decision2" id='disp' style="float:left">
+	</select> 
+</td>
+</table>
+<script type="text/javascript">
+	function startup()
+	{
+		window.red=['Orange','yellow','Blue',];
+		window.bored=['ugh','eh','why','tired     ',];
+		window.cat=['tabby','cheshire  ','house','bob',];
+		window.dog=['retriever ','canine','poodle',];
+		for(var x=0; x<window.red.length; x++)
+		{
+		var option=document.createElement('option');
+		option.text=window.red[x];
+		document.getElementById('disp').add(option);
+		}
+	}
+	function change(va)
+	{
+		if(va=='list')
+		{
+			document.getElementById("selection").size="5";
+		}
+		else
+		{
+			document.getElementById("selection").size="";
+		}
+	}
+	function addThings()
+	{
+		var disp = document.getElementById('disp');
+		var selec=document.getElementById('selection');
+		while(disp.length>0)
+  		{
+  		disp.remove(disp.length-1);
+  		} 
+  		var list='';
+  		var list1obj=selec.value; //|| document.getSelection(selec);
+  		if(list1obj=='Dog'){list=window.dog;}
+  		if(list1obj=='Cat'){list=window.cat;}
+		if(list1obj=='Red'){list=window.red;}
+  		if(list1obj=='Bored'){list=window.bored;}
+
+		for(var x=0; x<list.length; x++)
+		{
+		var option=document.createElement('option');
+		option.text=list[x];
+		document.getElementById('disp').add(option);
+		}
+
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+mkdir name
+>makes a directory called name
+fs la . userName
+>changes access so userName can access files
+stuff looking for:
+	anything that is .java that was modified
+	Anything .xml that modified
+	anything .manifest modified

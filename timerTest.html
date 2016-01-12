@@ -1,0 +1,53 @@
+<html>
+<head>
+<script>
+function startup()
+{
+	window.m="1";
+	window.s="0";
+	var second=checkTime(window.s);
+	var minute=window.m;
+	document.getElementById('clock').innerHTML=minute+":"+second;
+	
+
+
+}
+function tick()
+{
+	if(parseInt(window.s)==0)
+	{
+		window.m=parseInt(window.m)-1;
+		window.s="59";
+	}
+	else
+	{
+		window.s= parseInt(window.s)-1;
+	}
+	var second=checkTime(window.s);
+	var minute=window.m;
+	document.getElementById('clock').innerHTML=minute+":"+second;
+	if(parseInt(window.m)==0 && parseInt(window.s)==0)
+	{
+		alert("TIMES UP")
+	}
+	else if( parseInt(window.m)>=0){
+		if(parseInt(window.s)>=0)
+		{
+			window.setTimeout(function(){tick()}, 1000);
+		}
+	}
+
+}
+function checkTime(i) {
+    if (i<10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
+</head>
+<body onload="startup()">
+<div id="clock"></div>
+<button type=button accesskey="s" onclick="tick();">start</button>
+
+
+</body>
+</html>

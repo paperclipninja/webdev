@@ -1,0 +1,26 @@
+
+<html>														Arianna Sze
+<head>														Period 5
+	<title>Mini Lab</title>
+</head>
+<body onclick="bodyClicked(event)">
+	<p> HELLO </p>
+	<table border="1">
+		<tr>
+			<td >CLick me</td>
+			<td>Hello</td>
+		</tr>
+	</table>
+	<br>
+	<br>
+	<br>
+	<p align=bottom id='display'>Item Clicked: </p>
+<script>
+function bodyClicked(evt)
+ {
+  evt = evt || window.evt;
+  alert(evt.target.nodeName);
+}
+</script>
+</body>
+</html>
